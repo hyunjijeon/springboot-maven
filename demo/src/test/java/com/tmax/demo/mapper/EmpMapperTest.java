@@ -5,56 +5,65 @@ import java.util.List;
 import com.tmax.demo.dto.EmpDto;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EmpMapperTest {
 
     @Autowired
     EmpMapper mapper;
     
     @Test
-    @DisplayName("EmpMapperTest - selectAll")
+    @Order(1)
+    @DisplayName("(1) selectAll")
     void selectAll() {
         List<EmpDto> list = mapper.selectAll();
-        System.out.println("========== [EmpMapperTest][selectAll] row cnt: " + list.size());
+        System.out.println("[EmpMapperTest][selectAll] row cnt: " + list.size());
         for (EmpDto dto : list) {
-            System.out.println(dto.toString());
+            System.out.println("\t" + dto.toString());
         }
     }
 
     @Test
-    @DisplayName("EmpMapperTest - insert")
+    @Order(2)
+    @DisplayName("(2) insert")
     void insert() {
         EmpDto dto = new EmpDto(100, "king", 300, "JEJU");
         int affectedRows = mapper.insert(dto);
-        System.out.println("========== [EmpMapperTest][insert] affectedRows: " + affectedRows);
+        System.out.println("[EmpMapperTest][insert] insert EmpDto(100, \"king\", 300, \"JEJU\")\n\taffectedRows: " + affectedRows);
     }
 
     @Test
-    @DisplayName("EmpMapperTest - selectOneByEmpNo")
-    void selectOneByEmpNo() {
-        EmpDto dto = mapper.selectOneByEmpNo(100);
-        System.out.println("========== [EmpMapperTest][selectOneByEmpNo] selectOnByEmpNo = 100");
-        System.out.println(dto.toString());
-    }
-
-    @Test
-    @DisplayName("EmpMapperTest - update")
+    @Order(3)
+    @DisplayName("(3) update")
     void update() {
         EmpDto dto = new EmpDto();
         dto.setEmpNo(100);
-        dto.setName("updateKing");
+        dto.setName("KING");
         int affectedRows = mapper.update(dto);
-        System.out.println("========== [EmpMapperTest][update] affectedRows: " + affectedRows);
+        System.out.println("[EmpMapperTest][update] update king's name to KING\n\taffectedRows: " + affectedRows);
     }
 
     @Test
-    @DisplayName("EmpMapperTest - delete")
+    @Order(4)
+    @DisplayName("(4) selectOneByEmpNo")
+    void selectOneByEmpNo() {
+        EmpDto dto = mapper.selectOneByEmpNo(100);
+        System.out.println("[EmpMapperTest][selectOneByEmpNo] select empNo = 100");
+        System.out.println("\t" + dto.toString());
+    }
+
+    @Test
+    @Order(5)
+    @DisplayName("(5) delete")
     void delete() {
         int affectedRows = mapper.delete(100);
-        System.out.println("========== [EmpMapperTest][delete] affectedRows: " + affectedRows);
+        System.out.println("[EmpMapperTest][delete] delete empNo = 100\n\taffectedRows: " + affectedRows);
     }
 }
