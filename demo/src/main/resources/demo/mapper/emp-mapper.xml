@@ -8,11 +8,11 @@ FROM EMP
 WHERE EMPNO = #{empNo}</select>
   <select id="selectAllAsUser" resultMap="userResult">SELECT *
 FROM EMP</select>
-  <insert id="insert" parameterType="com.tmax.demo.dto.EmpDto">INSERT INTO EMP
+  <insert id="insert" parameterType="EMPDTO">INSERT INTO EMP
 ( EMPNO, NAME, AGE, ADDRESS )
 VALUES
 ( #{empNo}, #{name}, #{age}, #{address} )</insert>
-  <update id="update" parameterType="com.tmax.demo.dto.EmpDto">UPDATE EMP
+  <update id="update" parameterType="EMPDTO">UPDATE EMP
 SET NAME = #{name}
 WHERE EMPNO = #{empNo}</update>
   <delete id="delete" parameterType="int">DELETE FROM EMP
