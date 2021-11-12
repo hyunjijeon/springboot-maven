@@ -22,7 +22,7 @@ public class DemoApplication {
 		sessionFactory.setDataSource(dataSource);
 
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		sessionFactory.setMapperLocations(resolver.getResources("classpath:demo/mapper/*.xml"));
+		sessionFactory.setMapperLocations(resolver.getResources("classpath:demo/mapper/emp-mapper.xml"));
 		sessionFactory.setConfigLocation(resolver.getResource("classpath:demo/mapper-config/emp-config.xml"));
 		return sessionFactory.getObject();
 	}

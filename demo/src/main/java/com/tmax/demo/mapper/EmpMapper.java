@@ -14,7 +14,7 @@ public interface EmpMapper {
 
     public EmpDto selectOneByEmpNo(int empNo);
 
-    public UserDto selectAllAsUser();
+    public List<UserDto> selectAllAsUser();
 
     public int insert(EmpDto dto);
 

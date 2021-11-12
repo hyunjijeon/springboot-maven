@@ -3,6 +3,7 @@ package com.tmax.demo.mapper;
 import java.util.List;
 
 import com.tmax.demo.dto.EmpDto;
+import com.tmax.demo.dto.UserDto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -66,4 +67,16 @@ public class EmpMapperTest {
         int affectedRows = mapper.delete(100);
         System.out.println("[EmpMapperTest][delete] delete empNo = 100\n\taffectedRows: " + affectedRows);
     }
+
+    @Test
+    @Order(6)
+    @DisplayName("(6) selectAllAsUser")
+    void selectAllAsUser() {
+        List<UserDto> list = mapper.selectAllAsUser();
+        System.out.println("[EmpMapperTest][selectAllAsUser] row cnt: " + list.size());
+        for (UserDto dto : list) {
+            System.out.println("\t" + dto.toString());
+        }
+    }
+
 }
