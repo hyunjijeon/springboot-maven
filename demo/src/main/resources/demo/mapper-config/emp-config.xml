@@ -4,4 +4,7 @@
   <typeAliases>
     <typeAlias alias="EMPDTO" type="com.tmax.demo.dto.EmpDto"></typeAlias>
   </typeAliases>
+  <mappers>
+    <mapper resource="demo/mapper/emp-mapper.xml"></mapper>
+  </mappers>
 </configuration>
