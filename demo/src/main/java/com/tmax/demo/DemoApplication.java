@@ -13,7 +13,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
+        
+        
 	}
 
 	@Bean
